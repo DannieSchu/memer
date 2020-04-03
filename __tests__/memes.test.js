@@ -48,7 +48,7 @@ describe('meme routes', () => {
     const meme = await getMeme();
 
     return request(app)
-      .patch(`/api/v1/memes/${meme._id}`)
+      .put(`/api/v1/memes/${meme._id}`)
       .send({ top: 'some new string' })
       .then(res => {
         expect(res.body).toEqual({
