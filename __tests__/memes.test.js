@@ -38,7 +38,7 @@ describe('meme routes', () => {
     const meme = await getMeme();
 
     return request(app)
-      .get(`/api/v1/memes${meme._id}`)
+      .get(`/api/v1/memes/${meme._id}`)
       .then(res => {
         expect(res.body).toEqual(meme);
       });
