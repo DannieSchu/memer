@@ -15,9 +15,11 @@ describe('meme routes', () => {
       })
       .then(res => {
         expect(res.body).toEqual({
+          _id: expect.any(String),
           top: 'some string',
           image: 'a url',
-          bottom: 'the other half of the meme string'
+          bottom: 'the other half of the meme string',
+          __v: 0
         });
       });
   });
