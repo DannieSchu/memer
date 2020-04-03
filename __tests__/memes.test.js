@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { getMemes } = require('../db/data-helpers'); 
+const { getMeme, getMemes } = require('../db/data-helpers'); 
 
 const request = require('supertest');
 const app = require('../lib/app');
@@ -31,6 +31,16 @@ describe('meme routes', () => {
       .get('/api/v1/memes')
       .then(res => {
         expect(res.body).toEqual(memes);
+      });
+  });
+
+  it('gets a meme by its id', async() => {
+    const meme = await getMeme();
+
+    return request(app)
+      .get(`/api/v1/memes${meme._id}`)
+      .then(res => {
+        expect(res.body).toEqual(meme);
       });
   });
 });
